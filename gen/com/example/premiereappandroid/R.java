@@ -16,6 +16,9 @@ public final class R {
         public static final int abc_slide_out_bottom=0x7f040004;
         public static final int abc_slide_out_top=0x7f040005;
     }
+    public static final class array {
+        public static final int sex=0x7f0c0000;
+    }
     public static final class attr {
         /**  Custom divider drawable to use for elements in the action bar. 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
@@ -1197,10 +1200,13 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050018;
         public static final int action_menu_presenter=0x7f050019;
         public static final int action_mode_close_button=0x7f050026;
-        public static final int action_settings=0x7f050064;
+        public static final int action_settings=0x7f05006f;
         public static final int activity_chooser_view_content=0x7f050027;
         public static final int always=0x7f05000d;
         public static final int beginning=0x7f050013;
+        public static final int button1=0x7f050067;
+        public static final int button_facebook=0x7f05006c;
+        public static final int button_twitter=0x7f05006d;
         public static final int checkbox=0x7f05002f;
         public static final int collapseActionView=0x7f05000f;
         public static final int com_facebook_body_frame=0x7f050050;
@@ -1233,10 +1239,15 @@ containing a value of this type.
         public static final int dialog=0x7f050010;
         public static final int disableHome=0x7f05000a;
         public static final int dropdown=0x7f050011;
-        public static final int edit_group=0x7f05005d;
+        public static final int editCountry=0x7f050062;
+        public static final int editFirstName=0x7f05005c;
+        public static final int editLastName=0x7f05005e;
+        public static final int editPassword=0x7f050066;
+        public static final int editPhone=0x7f050064;
+        public static final int editPseudo=0x7f05005a;
+        public static final int edit_group=0x7f05006b;
         public static final int edit_query=0x7f050032;
-        public static final int editor=0x7f05005f;
-        public static final int enable=0x7f05005b;
+        public static final int enable=0x7f050069;
         public static final int end=0x7f050015;
         public static final int expand_activities_button=0x7f050028;
         public static final int expanded_menu=0x7f05002e;
@@ -1246,22 +1257,18 @@ containing a value of this type.
         public static final int ifRoom=0x7f05000c;
         public static final int image=0x7f050029;
         public static final int large=0x7f050002;
-        public static final int last=0x7f050060;
         public static final int listMode=0x7f050003;
-        public static final int list_fragment=0x7f050061;
         public static final int list_item=0x7f05002b;
-        public static final int logOut=0x7f050059;
         public static final int middle=0x7f050014;
         public static final int never=0x7f05000b;
         public static final int none=0x7f050012;
         public static final int normal=0x7f050001;
         public static final int picker_subtitle=0x7f05004d;
-        public static final int post=0x7f05005e;
-        public static final int progressBar1=0x7f050062;
+        public static final int progressBar1=0x7f050068;
         public static final int progress_circular=0x7f05001a;
         public static final int progress_horizontal=0x7f05001b;
         public static final int radio=0x7f050031;
-        public static final int refresh_timeline=0x7f050063;
+        public static final int refresh_timeline=0x7f05006e;
         public static final int search_badge=0x7f050034;
         public static final int search_bar=0x7f050033;
         public static final int search_button=0x7f050035;
@@ -1277,15 +1284,22 @@ containing a value of this type.
         public static final int showHome=0x7f050006;
         public static final int showTitle=0x7f050008;
         public static final int small=0x7f050000;
+        public static final int spinner1=0x7f050060;
         public static final int split_action_bar=0x7f050020;
         public static final int submit_area=0x7f05003b;
         public static final int tabMode=0x7f050004;
+        public static final int textView1=0x7f050059;
+        public static final int textView2=0x7f05005b;
+        public static final int textView3=0x7f05005d;
+        public static final int textView4=0x7f050061;
+        public static final int textView5=0x7f05005f;
+        public static final int textView6=0x7f050063;
+        public static final int textView7=0x7f050065;
         public static final int title=0x7f05002d;
         public static final int top_action_bar=0x7f050022;
         public static final int up=0x7f050023;
         public static final int useLogo=0x7f050005;
-        public static final int user=0x7f05005c;
-        public static final int welcome=0x7f05005a;
+        public static final int user=0x7f05006a;
         public static final int withText=0x7f05000e;
     }
     public static final class integer {
@@ -1354,13 +1368,14 @@ containing a value of this type.
         public static final int com_facebook_usersettingsfragment=0x7f030025;
         public static final int facebook_main=0x7f030026;
         public static final int fragment_main=0x7f030027;
-        public static final int main=0x7f030028;
-        public static final int progress_view=0x7f030029;
-        public static final int support_simple_spinner_dropdown_item=0x7f03002a;
+        public static final int progress_view=0x7f030028;
+        public static final int support_simple_spinner_dropdown_item=0x7f030029;
+        public static final int twitter_main=0x7f03002a;
+        public static final int welcome=0x7f03002b;
     }
     public static final class menu {
-        public static final int bloa_options_menu=0x7f0c0000;
-        public static final int main=0x7f0c0001;
+        public static final int bloa_options_menu=0x7f0d0000;
+        public static final int main=0x7f0d0001;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -1435,12 +1450,23 @@ containing a value of this type.
         public static final int com_facebook_usersettingsfragment_log_in_button=0x7f080008;
         public static final int com_facebook_usersettingsfragment_logged_in=0x7f080009;
         public static final int com_facebook_usersettingsfragment_not_logged_in=0x7f08000a;
+        public static final int country=0x7f080042;
+        public static final int email=0x7f080040;
         public static final int empty=0x7f080039;
+        public static final int first_name=0x7f08003e;
         public static final int hello_world=0x7f080028;
         public static final int label=0x7f08002d;
+        public static final int last_name=0x7f08003f;
+        public static final int login_facebook=0x7f08003b;
+        public static final int login_twitter=0x7f08003c;
         public static final int oauth_name=0x7f08002b;
+        public static final int password=0x7f080044;
+        public static final int phone=0x7f080043;
         public static final int post=0x7f08002e;
+        public static final int pseudo=0x7f08003d;
         public static final int refresh_timeline=0x7f08003a;
+        public static final int sex=0x7f080041;
+        public static final int sign_in=0x7f080045;
         public static final int timeline_progress_text=0x7f080033;
         public static final int timeline_progress_title=0x7f080032;
         public static final int tweet=0x7f08002c;

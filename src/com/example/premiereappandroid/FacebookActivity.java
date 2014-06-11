@@ -3,6 +3,7 @@ package com.example.premiereappandroid;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.facebook.*;
@@ -30,8 +31,23 @@ public class FacebookActivity extends Activity {
             @Override
             public void onCompleted(GraphUser user, Response response) {
               if (user != null) {
-                TextView welcome = (TextView) findViewById(R.id.welcome);
-                welcome.setText("Hello " + user.getName() + "!");
+                TextView pseudo = (TextView) findViewById(R.id.editPseudo);
+                pseudo.setText(user.getName());
+                
+                TextView firstName = (TextView) findViewById(R.id.editFirstName);
+                firstName.setText(user.getFirstName());
+                
+                TextView lastName = (TextView) findViewById(R.id.editLastName);
+                lastName.setText(user.getLastName());
+                
+                Spinner spinner = (Spinner) findViewById(R.id.spinner1);
+                
+                if(user.asMap().get("gender").toString().equals("male")){
+                	spinner.setSelection(0);
+                }
+                else {
+                	spinner.setSelection(1);
+                }
               }
             }
           }).executeAsync();

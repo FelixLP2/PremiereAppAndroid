@@ -21,5 +21,16 @@
     <string name="bad_value">Bad Value</string>
     <string name="empty">Nothing to show</string>
     <string name="refresh_timeline">Refresh Timeline</string>
+    <string name="login_facebook">Se connecter avec Facebook</string>
+    <string name="login_twitter">Se connecter avec Twitter</string>
+    <string name="pseudo">Pseudo</string>
+    <string name="first_name">Prénom</string>
+    <string name="last_name">Nom</string>
+    <string name="email">Email</string>
+    <string name="sex">Sexe</string>
+    <string name="country">Pays</string>
+    <string name="phone">Téléphone</string>
+    <string name="password">Mot de passe</string>
+    <string name="sign_in">S\'enregistrer</string>
 
 </resources>

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 - Brion Noble Emde
+² * Copyright 2013 - Brion Noble Emde
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,6 +29,8 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.example.premiereappandroid.App;
+import com.example.premiereappandroid.BloaActivity;
+import com.example.premiereappandroid.MainActivity;
 import com.example.premiereappandroid.R;
 
 public class OAuthActivity extends Activity {
@@ -96,7 +98,8 @@ public class OAuthActivity extends Activity {
             } else {
                 String denied = uri.getQueryParameter("denied");
                 Log.e(TAG, "Access denied or canceled. Token returned is: " + denied);
-                finish();
+                
+                OAuthActivity.this.startActivity(new Intent(OAuthActivity.this, MainActivity.class));
             }
         }
     }
@@ -152,7 +155,7 @@ public class OAuthActivity extends Activity {
                 // Clear the request stuff, now that we have the real thing
                 App.saveRequestInformation(mSettings, null, null);
             }
-            finish();
+            OAuthActivity.this.startActivity(new Intent(OAuthActivity.this, BloaActivity.class));
         }
     }
 

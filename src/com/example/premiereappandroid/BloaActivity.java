@@ -49,11 +49,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.premiereappandroid.R;
 import com.example.premiereappandroid.provider.KeysProvider;
@@ -67,10 +64,6 @@ public class BloaActivity extends FragmentActivity implements LoaderCallbacks<Cu
     public static final String TAG = BloaActivity.class.toString();
 
     private CheckBox mCB;
-    private EditText mEditor;
-    private Button mButton;
-    private TextView mUser;
-    private TextView mLast;
 
     private OAuthConsumer mConsumer = null;
 
@@ -88,22 +81,14 @@ public class BloaActivity extends FragmentActivity implements LoaderCallbacks<Cu
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.main);
+        setContentView(R.layout.twitter_main);
 
         mConsumer = ((App) getApplication()).getOAuthConsumer();
 
         mCB = (CheckBox) this.findViewById(R.id.enable);
         mCB.setChecked(false);
         mCB.setOnClickListener(new LoginCheckBoxClickedListener());
-
-        mEditor = (EditText) this.findViewById(R.id.editor);
-
-        mButton = (Button) this.findViewById(R.id.post);
-        mButton.setOnClickListener(new PostButtonClickListener());
-
-        mUser = (TextView) this.findViewById(R.id.user);
-        mLast = (TextView) this.findViewById(R.id.last);
-
+        
         mSettings = PreferenceManager.getDefaultSharedPreferences(this);
 
         getSupportLoaderManager().initLoader(App.BLOA_LOADER_ID, null, (LoaderCallbacks<Cursor>) this);
@@ -169,8 +154,6 @@ public class BloaActivity extends FragmentActivity implements LoaderCallbacks<Cu
         protected void onPostExecute(Boolean loggedIn) {
             mDialog.dismiss();
             mCB.setChecked(loggedIn);
-            mButton.setEnabled(loggedIn);
-            mEditor.setEnabled(loggedIn);
             if (loggedIn) {
                 TimelineSelector ss = new TimelineSelector(App.HOME_TIMELINE_URL_STRING);
                 new GetTimelineTask().execute(ss);
@@ -222,17 +205,6 @@ public class BloaActivity extends FragmentActivity implements LoaderCallbacks<Cu
         }
     }
 
-    class PostButtonClickListener implements OnClickListener {
-        @Override
-        public void onClick(View v) {
-            String postString = mEditor.getText().toString();
-            if (postString.length() == 0) {
-                Toast.makeText(BloaActivity.this, getText(R.string.tweet_empty), Toast.LENGTH_SHORT).show();
-            } else {
-                new PostTask().execute(postString);
-            }
-        }
-    }
 
     class LoginCheckBoxClickedListener implements OnClickListener {
 
@@ -243,11 +215,6 @@ public class BloaActivity extends FragmentActivity implements LoaderCallbacks<Cu
             } else {
                 App.saveAuthInformation(mSettings, null, null);
                 deleteStatusRecord();
-                deleteTimelineRecords();
-                mButton.setEnabled(false);
-                mEditor.setEnabled(false);
-                mEditor.setText(null);
-                updateUI(null, null);
             }
             mCB.setChecked(false); // the oauth callback will set it to the proper state
         }
@@ -292,7 +259,6 @@ public class BloaActivity extends FragmentActivity implements LoaderCallbacks<Cu
         // This is in the UI thread, so we can mess with the UI
         protected void onPostExecute(JSONObject jso) {
             mDialog.dismiss();
-            BloaActivity.this.mEditor.setText(null);
         }
     }
 
@@ -383,31 +349,9 @@ public class BloaActivity extends FragmentActivity implements LoaderCallbacks<Cu
             null, UserStatusRecord.DEFAULT_SORT_ORDER);
     }
 
-    @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
-        // We got something but it might be empty
-        String name = null, last = null;
-        if (cursor.moveToFirst()) {
-            name = cursor.getString(App.IDX_USER_STATUS_USER_NAME);
-            last = cursor.getString(App.IDX_USER_STATUS_USER_TEXT);
-        }
-        updateUI(name, last);
-    }
 
-    @Override
-    public void onLoaderReset(Loader<Cursor> loader) {
-        updateUI(null, null);
-    }
 
-    private void updateUI(String userName, String lastMessage) {
-        if (userName != null && lastMessage != null) {
-            mUser.setText(userName);
-            mLast.setText(lastMessage);
-        } else {
-            mUser.setText(getString(R.string.userhint));
-            mLast.setText(getString(R.string.userhint));
-        }
-    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -428,4 +372,20 @@ public class BloaActivity extends FragmentActivity implements LoaderCallbacks<Cu
             return false;
         }
     }
+
+	@Override
+	public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
+		String name = null;
+		if (cursor.moveToFirst()) {
+            name = cursor.getString(App.IDX_USER_STATUS_USER_NAME);
+		}
+		TextView pseudo = (TextView) findViewById(R.id.editPseudo);
+        pseudo.setText(name);
+	}
+
+	@Override
+	public void onLoaderReset(Loader<Cursor> loader) {
+		// TODO Auto-generated method stub
+		
+	}
 }
